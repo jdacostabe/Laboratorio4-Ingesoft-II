@@ -25,7 +25,6 @@ pipeline {
         }
 
         stage('Testing credentials services') {
-          agent any
           environment {
             CI = 'true'
           }
@@ -35,6 +34,9 @@ pipeline {
         }
 
         stage('Unit Testing') {
+          environment {
+            CI = 'true'
+          }
           steps {
             sh './scripts/test/testingUnits.sh'
           }
