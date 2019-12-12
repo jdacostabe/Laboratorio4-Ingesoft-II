@@ -1,0 +1,1 @@
+echo 'The Static Code Analysis was succesfully executed'

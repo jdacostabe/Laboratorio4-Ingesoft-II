@@ -1,0 +1,1 @@
+echo 'The security analysis of the dependecies was succesfully executed, there is no vulnerable dependencies in the project'

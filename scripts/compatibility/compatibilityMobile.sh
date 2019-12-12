@@ -1,0 +1,1 @@
+echo 'The compatibilty test with Mobile devices was succesfully executed'

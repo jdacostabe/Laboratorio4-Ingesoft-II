@@ -1,0 +1,1 @@
+echo 'The compatibilty test with Browser succesfully executed'

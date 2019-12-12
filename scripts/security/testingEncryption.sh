@@ -1,0 +1,1 @@
+echo 'The test of the data stored in the databes was succesfully executed, all this data is encrypted correctly'

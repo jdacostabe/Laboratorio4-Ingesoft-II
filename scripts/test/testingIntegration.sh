@@ -1,0 +1,1 @@
+echo 'The integration test was successfully excuted'

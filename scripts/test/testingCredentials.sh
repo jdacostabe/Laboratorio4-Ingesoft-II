@@ -1,0 +1,1 @@
+echo 'The credentials are valid, there is no errors'

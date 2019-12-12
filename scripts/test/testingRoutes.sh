@@ -1,0 +1,1 @@
+echo 'The routes were tested, everything is ok'

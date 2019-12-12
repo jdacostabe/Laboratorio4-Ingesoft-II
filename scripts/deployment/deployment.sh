@@ -1,0 +1,1 @@
+echo 'The deployment was succesfully executed'

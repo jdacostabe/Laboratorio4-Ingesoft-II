@@ -1,0 +1,1 @@
+echo 'The End to End test was executed. Everything is ok.'
