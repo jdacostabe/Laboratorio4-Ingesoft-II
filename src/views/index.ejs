@@ -1,0 +1,72 @@
+<!--Motor de plantilla que se encarga de añadirle funcionalidades extras a html-->
+<!--Se hicieron el encabezado y el pie de pagina aqui, pero se pasaron a otras clases, pues son reutilizables-->
+<!--Lo que está a continuación es la fomra de llamar a otros archivos (Es como si ese código estuviese escrito en este documento)-->
+<% include partials/_header %>
+
+    <!--Hace que se reciban los datos que ya hay en la base de datos cuando se renderiza
+    (Se recibe un arreglo de datos)-->
+    <!--<pre>
+        <%= tasks %>
+    </pre> -->
+    <div class = "container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <!--Se le da una acción que se llamará cuando se pulse el botón, y se le indica a la página web, que dicha acción es tipo POST, osea, de enviar datos al servidor-->
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="title" placeholder="Inserta un título" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" cols="80" class="form-control" placeholder="Descripción"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- LIST -->
+            <div class="col-md-7">
+                <!--Se hace la tabla que guarda y organiza lo que ya hay en la base de datos-->
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Operación</th>
+                        </tr>
+                    </thead>
+                    <!--Se le ingresan, y se organiza la información recibida al principio del HTML-->
+                    <tbody>
+                        <!--Bucle de JavaScript-->
+                        <% for(var i = 0; i < tasks.length; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= tasks[i].title %></td>
+                                <td><%= tasks[i].description %></td>
+                                <td>
+                                    <!-- Botón para saber si se ha hecho una tarea o no -->
+                                    <!-- Si el estado es False, se pone en negro el botón, pero si es verdadero, se pone en verde -->
+                                    <a href="/change/<%= tasks[i]._id %>" 
+                                        class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark'%>">
+                                        Done
+                                    </a>
+                                    <!-- Botón para borrar una tarea -->
+                                    <!-- Se llama el metodo de index.js pasandole el parametro luego del segundo '/', el cual se usará para borrar la tarea indicada -->
+                                    <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Delete</a>
+                                    <!-- Botón para editar una tarea -->
+                                    <!-- Se llama el metodo de index.js pasandole el parametro luego del segundo '/', el cual se usará para borrar la tarea indicada -->
+                                    <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Edit</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<% include partials/_footer %>
