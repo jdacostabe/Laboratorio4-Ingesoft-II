@@ -16,12 +16,19 @@ pipeline {
     stage('Testing') {
       parallel {
         stage('Testing routes') {
+          environment {
+            CI = 'true'
+          }
           steps {
             sh './scripts/test/testingRoutes.sh'
           }
         }
 
         stage('Testing credentials services') {
+          agent any
+          environment {
+            CI = 'true'
+          }
           steps {
             sh './scripts/test/testingCredentials.sh'
           }
